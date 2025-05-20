@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import { Form, Button }     from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 export default function CommentForm({ onSubmit }) {
-  const [name, setName]       = useState('');
+  const [name, setName] = useState('');
   const [content, setContent] = useState('');
 
   const handle = e => {
     e.preventDefault();
-    onSubmit({ name, content });
+    onSubmit({
+      name: name.trim() === '' ? 'Anónimo' : name.trim(),
+      content: content.trim()
+    });
     setContent('');
   };
 
   return (
     <Form onSubmit={handle}>
       <Form.Group className="mb-3" controlId="commentName">
-        <Form.Label>Tu nombre</Form.Label>
+        <Form.Label>Tu nombre (opcional)</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Ej. Juan Pérez"
+          placeholder="Deja en blanco para ser anónimo"
           value={name}
           onChange={e => setName(e.target.value)}
-          required
         />
       </Form.Group>
+
       <Form.Group className="mb-4" controlId="commentContent">
         <Form.Label>Comentario</Form.Label>
         <Form.Control
@@ -34,6 +37,7 @@ export default function CommentForm({ onSubmit }) {
           required
         />
       </Form.Group>
+
       <Button variant="primary" type="submit">
         Enviar comentario
       </Button>

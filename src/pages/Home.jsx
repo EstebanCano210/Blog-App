@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="mb-4">Blog de Personal</h1>
+      <h1 className="mb-4">Publicaciones</h1>
 
       {catLoading ? (
         <div className="text-center mb-4"><Spinner animation="border" /></div>

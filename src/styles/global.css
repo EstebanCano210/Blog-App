@@ -1,20 +1,89 @@
-/* src/styles/global.css */
+:root {
+  --bg: #121212;
+  --panel: #1e1e1e;
+  --text: #e0e0e0;       
+  --subtext: #a0a0a0;    
+  --primary: #bb86fc;    
+  --border: #333333;     
+}
 
-/* Aquí tus colores, tipografía o resets */
 body {
-  background-color: #f2f2f2;
-  color: #333;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+.navbar,
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand {
+  background-color: var(--panel) !important;
+  color: var(--text)   !important;
 }
 
-/* Por ejemplo, un override para las tarjetas */
 .card {
-  border-radius: 12px;
-  transition: transform .2s;
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
 }
-.card:hover {
-  transform: translateY(-4px);
+
+.card .card-title,
+.card .card-subtitle {
+  color: var(--text);
+}
+
+.card .text-muted,
+.small {
+  color: var(--subtext) !important;
+}
+
+.card .card-img-top {
+  border-bottom: 1px solid var(--border);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color:   var(--primary);
+  color:          #000;
+}
+.btn-primary:hover {
+  background-color: #9a67ea;
+  border-color:     #9a67ea;
+}
+
+.form-control {
+  background-color: var(--panel);
+  color:            var(--text);
+  border:           1px solid var(--border);
+}
+.form-control:focus {
+  background-color: var(--panel);
+  color:            var(--text);
+  border:           1px solid var(--primary);
+  box-shadow:       none;
+}
+
+.list-group-item {
+  background-color: var(--panel);
+  border: none;
+  color: var(--text);
+}
+
+.form-select {
+  background-color: var(--panel);
+  color:            var(--text);
+  border:           1px solid var(--border);
+}
+
+.mb-4 { margin-bottom: 1.5rem !important; }
+.mb-5 { margin-bottom: 3rem   !important; }
+.my-5 { margin-top: 3rem     !important; margin-bottom: 3rem !important; }
+.p-0  { padding: 0           !important; }
+
+.form-control {
+  background-color: #2b2b2b !important;
+  color: #f1f1f1 !important;
+  border-color: #444 !important;
+}
+.form-control::placeholder {
+  color: #999 !important;
 }

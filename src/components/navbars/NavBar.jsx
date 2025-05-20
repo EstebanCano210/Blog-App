@@ -7,7 +7,7 @@ export default function NavBar() {
     <Navbar bg="dark" variant="dark" expand="md" className="mb-4">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          📚 Blog-App
+          📚 Blog Academico
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-nav" />
         <Navbar.Collapse id="main-nav">

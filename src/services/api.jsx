@@ -1,4 +1,3 @@
-// src/services/api.jsx
 import axios from 'axios';
 
 const API = axios.create({
@@ -26,8 +25,11 @@ export const deactivatePost   = id => API.delete(`/posts/${id}`);
 // —— Comentarios —— //
 export const createComment    = (postId, data) =>
   API.post(`/posts/${postId}/comments`, data);
+export const updateComment  = (postId, id, data) =>
+  API.put(`/posts/${postId}/comments/${id}`, data);
+export const deleteComment  = (postId, id) =>
+  API.delete(`/posts/${postId}/comments/${id}`);
 
-// (Opcional) exportar todo junto
 export default {
   getCategories,
   createCategory,

@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
-import { createComment,
-         getPostById } from '../../services/';
+import {
+  createComment,
+  getPostById,
+  updateComment,
+  deleteComment
+} from '../../services/';
 
 export function useComments(postId) {
   const [comments, setComments] = useState([]);
-  const [loading, setLoading]   = useState(true);
+  const [loading,  setLoading]  = useState(true);
 
   const fetch = () => {
     setLoading(true);
     getPostById(postId)
       .then(res => setComments(res.data.data.comments))
-      .finally(()=> setLoading(false));
+      .finally(() => setLoading(false));
   };
 
   useEffect(fetch, [postId]);
@@ -20,5 +24,21 @@ export function useComments(postId) {
     fetch();
   };
 
-  return { comments, loading, add };
+  const update = async (commentId, data) => {
+    await updateComment(postId, commentId, data);
+    fetch();
+  };
+
+  const remove = async commentId => {
+    await deleteComment(postId, commentId);
+    fetch();
+  };
+
+  return {
+    comments,
+    loading,
+    add,
+    update,
+    remove
+  };
 }
